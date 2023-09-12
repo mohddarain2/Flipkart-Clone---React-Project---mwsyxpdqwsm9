@@ -35,18 +35,6 @@ const LoginButton = styled(Button)`
     border-radius: 2px;
 `;
 
-const RequestOTP = styled(Button)`
-    text-transform: none;
-    background: #fff;
-    color: #2874f0;
-    height: 48px;
-    border-radius: 2px;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
-`;
-const Text = styled(Typography)`
-    color: #878787;
-    font-size: 12px;
-`;
 const CreateAccount = styled(Typography)`
     margin: auto 0 5px 0;
     text-align: center;
@@ -195,7 +183,7 @@ const LoginDialog = (props) => {
 
                             <TextField variant="standard" label="Enter Email" onChange={(e) => setLoginEmail(e.target.value)}  />
                             <TextField type="password" variant="standard" label="Enter Password" onChange={(e) => setLoginPassword(e.target.value)}  />
-                            <LoginButton onClick={handleLogin}>Login</LoginButton>
+                            <LoginButton onClick={handleLogin} style={{backgroundColor:"#fb641b"}}>Login</LoginButton>
                             <Typography style={{ textAlign: 'center' }}>OR</Typography>
                             <CreateAccount onClick={toggleSignup}>New to Flipkart? Create an account</CreateAccount>
                         </Wrapper>
@@ -204,7 +192,7 @@ const LoginDialog = (props) => {
                             <TextField variant="standard" name="name" label="Enter Your Name" onChange={(e) => setSignupName(e.target.value)} />
                             <TextField variant="standard" name="email" label="Enter Email" onChange={(e) => setSignupEmail(e.target.value)} />
                             <TextField type="password" variant="standard" name="password" label="Enter Password" onChange={(e) => setSignupPassword(e.target.value)} />
-                            <LoginButton onClick={handleSignup}>Continue</LoginButton>
+                            <LoginButton onClick={handleSignup} style={{backgroundColor:"#fb641b"}}>Continue</LoginButton>
                             {/* onChange={(e) => onInputChange(e)}
                             onChange={(e) => onInputChange(e)}
                             onChange={(e) => onInputChange(e)}  */}
