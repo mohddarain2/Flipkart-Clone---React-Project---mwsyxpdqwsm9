@@ -91,6 +91,10 @@ const LoginDialog = (props) => {
     const toggleSignup = () => {
         toggleAccount(accountInitialValues.signup);
     }
+    const toggleLogin = () => {
+        toggleAccount(accountInitialValues.login);
+    }
+    
     // const onInputChange = (e) => {
     //     setSignup({ ...signup, [e.target.name]: e.target.value });
     //     // console.log(signup)
@@ -191,10 +195,8 @@ const LoginDialog = (props) => {
 
                             <TextField variant="standard" label="Enter Email/Mobile number" onChange={(e) => setLoginEmail(e.target.value)} required />
                             <TextField type="password" variant="standard" label="Enter Password" onChange={(e) => setLoginPassword(e.target.value)} required />
-                            <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
                             <LoginButton onClick={handleLogin}>Login</LoginButton>
                             <Typography style={{ textAlign: 'center' }}>OR</Typography>
-                            <RequestOTP>Request OTP</RequestOTP>
                             <CreateAccount onClick={toggleSignup}>New to Flipkart? Create an account</CreateAccount>
                         </Wrapper>
                         :
@@ -206,6 +208,8 @@ const LoginDialog = (props) => {
                             {/* onChange={(e) => onInputChange(e)}
                             onChange={(e) => onInputChange(e)}
                             onChange={(e) => onInputChange(e)}  */}
+                            <Typography style={{ textAlign: 'center' }}>OR</Typography>
+                            <CreateAccount onClick={toggleLogin}>Already have an account ? Please Login</CreateAccount>
                         </Wrapper>
                     }
                 </Box>
