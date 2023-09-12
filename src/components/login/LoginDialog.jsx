@@ -193,8 +193,8 @@ const LoginDialog = (props) => {
                     {account.view === 'login' ?
                         <Wrapper>
 
-                            <TextField variant="standard" label="Enter Email/Mobile number" onChange={(e) => setLoginEmail(e.target.value)} required />
-                            <TextField type="password" variant="standard" label="Enter Password" onChange={(e) => setLoginPassword(e.target.value)} required />
+                            <TextField variant="standard" label="Enter Email" onChange={(e) => setLoginEmail(e.target.value)}  />
+                            <TextField type="password" variant="standard" label="Enter Password" onChange={(e) => setLoginPassword(e.target.value)}  />
                             <LoginButton onClick={handleLogin}>Login</LoginButton>
                             <Typography style={{ textAlign: 'center' }}>OR</Typography>
                             <CreateAccount onClick={toggleSignup}>New to Flipkart? Create an account</CreateAccount>
