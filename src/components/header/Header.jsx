@@ -73,12 +73,12 @@ const Header = () => {
   return (
     <StyleHeader>
       <Toolbar style={{ minHeight: 55 }}>
-        <MenuButton
-          color="inherit"
-          onClick={handleOpen}
-        >
-          <MenuIcon />
-        </MenuButton>
+          <MenuButton
+            color="inherit"
+            onClick={handleOpen}
+          >
+            <MenuIcon />
+          </MenuButton>
 
         <Drawer open={open} onClose={handleClose}>
           {list()}

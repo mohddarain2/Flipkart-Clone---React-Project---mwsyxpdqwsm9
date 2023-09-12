@@ -70,15 +70,21 @@ const Shipping = () => {
     const navigate = useNavigate();
 
     const orderPlaced = () => {
-        if (userName !== '' && userAddress !== '' && userPhone !== ''){
+debugger
+        if (userName === '' || userAddress === '' || userPhone === ''){
+           alert("All  input field are  mandatory")
+        }
+         else if (userPhone.length !== 10) {
+            alert("Please use valid mobile number only 10 Digits")
+        }
+        else{
             alert("✨Congratulation!🎊, You Order ❤ has been Placed Successfully");
             setUserName('');
             localStorage.removeItem("shoppingCart");
             navigate('/');
             window.location.reload();
         }
-        else
-            alert("🙏Please Enter All the details")
+            
 
     }
 
@@ -94,11 +100,11 @@ const Shipping = () => {
                     <Box style={{alignItem:'center', width:'100%', margin:'0 40px'}}>
                         <FormGroup style={{margin:'15px 0'}}>
                             <FormInput>
-                                <InputLabel htmlFor="my-input">Enter your Name</InputLabel>
+                                <InputLabel htmlFor="my-input">Enter your Name *</InputLabel>
                                 <Input onChange={(e)=>setUserName(e.target.value)} value={userName} id="my-input" aria-describedby="my-helper-text" />
                             </FormInput>
                             <FormInput>
-                                <InputLabel htmlFor="my-add">Enter Your Address</InputLabel>
+                                <InputLabel htmlFor="my-add">Enter Your Address *</InputLabel>
                                 <Input onChange={(e) => setUserAddress(e.target.value)} value={userAddress} id="my-add" aria-describedby="my-helper-text" />
                             </FormInput>
                             <FormInput>
@@ -106,7 +112,7 @@ const Shipping = () => {
                                 <Input id="my-near" aria-describedby="my-helper-text" />
                             </FormInput>
                             <FormInput>
-                                <InputLabel htmlFor="my-number">Phone number</InputLabel>
+                                <InputLabel htmlFor="my-number">Phone number *</InputLabel>
                                 <Input onChange={(e) => setuserPhone(e.target.value)} value={userPhone} id="my-number" aria-describedby="my-helper-text" />
                             </FormInput>
                         </FormGroup>

@@ -83,7 +83,6 @@ export const cartSlice = createSlice({
                 return item;
             })
         },
-
     },
 })
 

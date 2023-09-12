@@ -13,11 +13,7 @@ import Home from './components/home/Home';
 import Cart from './components/cart/Cart'
 import DetailView from './components/details/DetailView';
 import Shipping from "./components/shipping/Shipping";
-// import Context from "./context/Context";
-// import allProductData from "./data/allProductData";
 
-
-//=======================================function starts=======================================
 function App() {
 
   // const items = useSelector((state) => state.allCart.item);

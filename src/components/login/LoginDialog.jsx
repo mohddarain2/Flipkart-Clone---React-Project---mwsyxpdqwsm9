@@ -69,7 +69,7 @@ const accountInitialValues = {
 };
 
 const signupInitialValues = {
-    name:'',
+    name: '',
     email: '',
     password: '',
 };
@@ -81,7 +81,7 @@ const LoginDialog = (props) => {
 
     const [account, toggleAccount] = useState(accountInitialValues.login);
     // const [signup, setSignup] = useState(signupInitialValues);
-// 
+    // 
     // const { userAccount, setUserAccount } = useContext(AccountContext);
 
     const handleClose = () => {
@@ -106,14 +106,29 @@ const LoginDialog = (props) => {
     const [signupName, setSignupName] = useState('');
     const [signupEmail, setSignupEmail] = useState('');
     const [singupPassword, setSignupPassword] = useState('');
-
+    let emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 
 
     const localSignUp = localStorage.getItem('signup');
     const localEmail = localStorage.getItem('email');
 
     const handleSignup = () => {
-        if (signupName !== '' && signupEmail !== '' && singupPassword !== '') {
+
+        //debugger
+        if (signupEmail === "" && singupPassword === "" && signupName === "") {
+            alert("All  input field are  mandatory ...")
+        } else if (signupName === '') {
+            alert('Please enter username ...')
+        } else if (signupEmail === '') {
+            alert('Please enter Email ...')
+        } else if (!signupEmail.match(emailPattern)) {
+            alert('Please enter valid email ...')
+        } else if (singupPassword === "") {
+            alert('Please enter Password ...')
+        } else if (localStorage.getItem("email") === signupEmail) {
+            alert('email  already exists')
+        }
+        else {
             localStorage.setItem("name", signupName)
             localStorage.setItem("email", signupEmail)
             localStorage.setItem("password", singupPassword)
@@ -121,13 +136,32 @@ const LoginDialog = (props) => {
             alert('Account created Successfully');
             // window.location.reload();
             handleClose();
-        } else {
-            alert('All fields Requied')
         }
     }
 
     const handleLogin = () => {
-        if (loginEmail === localStorage.getItem('email') && loginPassword === localStorage.getItem('password')) {
+        let emailPattern = /^\S+@\S+\.\S+$/;
+
+        if (loginEmail === "" && loginPassword === "") {
+            alert("All  input field are  mandatory ...");
+        } else if (loginEmail === '') {
+            alert('Please enter Email ...')
+        } else if (!loginEmail.match(emailPattern)) {
+            alert('Please enter valid email ...', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+        } else if (loginPassword === "") {
+            alert('Please enter Password ...')
+        } else if (loginEmail !== localStorage.getItem("email") || loginPassword !== localStorage.getItem("password")) {
+            alert("Your email and password do not match Please try again ...");
+        } else if (loginEmail === localStorage.getItem('email') && loginPassword === localStorage.getItem('password')) {
             // localStorage.setItem('signup', signupEmail);
             // window.location.reload();  
             alert('Welcome Back😍, LoggIn Successfully')
@@ -154,9 +188,9 @@ const LoginDialog = (props) => {
                     </Image>
                     {account.view === 'login' ?
                         <Wrapper>
-                            
-                            <TextField  variant="standard" label="Enter Email/Mobile number" onChange={(e) => setLoginEmail(e.target.value)} required/>
-                            <TextField type="password" variant="standard" label="Enter Password" onChange={(e) => setLoginPassword(e.target.value)} required/>
+
+                            <TextField variant="standard" label="Enter Email/Mobile number" onChange={(e) => setLoginEmail(e.target.value)} required />
+                            <TextField type="password" variant="standard" label="Enter Password" onChange={(e) => setLoginPassword(e.target.value)} required />
                             <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
                             <LoginButton onClick={handleLogin}>Login</LoginButton>
                             <Typography style={{ textAlign: 'center' }}>OR</Typography>
